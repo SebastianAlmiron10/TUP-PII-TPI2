@@ -61,8 +61,8 @@ class Profesor(Usuario):
         self.__anio_egreso = anio_egreso
 
     def __str__(self) -> str:
-        return super().__str__()
-    
+        return f'\nNombre: {self.nombre}\nApellido: {self.apellido}\nEmail: {self.email}\nContraseña: {self.contrasenia}\nTitulo: {self.titulo}\nAño egreso: {self.anio_egreso}\n'
+        
     @property
     def titulo(self):
         return self.__titulo
