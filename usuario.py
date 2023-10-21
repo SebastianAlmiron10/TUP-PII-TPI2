@@ -2,6 +2,7 @@ from cursos import *
 
 lista_alumnos = []
 lista_profesores = []
+lista_cursos_profes = []
 
 class Usuario():
 
@@ -77,7 +78,8 @@ class Profesor(Usuario):
         super().__init__(nombre, apellido, email, contrasenia)
         self.__titulo = titulo
         self.__anio_egreso = anio_egreso
-
+        self.__lista_dictar_cursos = []
+    
     def __str__(self) -> str:
         return f'\nNombre: {self.nombre}\nApellido: {self.apellido}\nEmail: {self.email}\nContraseña: {self.contrasenia}\nTitulo: {self.titulo}\nAño egreso: {self.anio_egreso}\n'
         
@@ -89,6 +91,21 @@ class Profesor(Usuario):
     def anio_egreso(self):
         return self.__anio_egreso
     
-    def dictar_curso(curso: Curso):
-        pass
+    @property
+    def lista_dictar_cursos(self):
+        return self.__lista_dictar_cursos
 
+    def dictar_curso(profe):
+        curso_nuevo = input("Ingrese el nombre del curso que quiere dar de alta")
+        contrasenia_nuevo_curso = Curso.generar_contrasenia()
+        
+        curso_new = Curso(curso_nuevo, contrasenia_nuevo_curso )
+        profe.lista_dictar_cursos.append(curso_new)
+        lista_cursos.append(curso_new)
+        print("Se agrego con exito\n")
+        
+        
+        
+    def mostrar_mis_cursos_profe(self):
+        for curso_profe in self.__lista_dictar_cursos:
+            print(curso_profe)
