@@ -2,6 +2,7 @@ from usuario import *
 from cursos import *
 from data import *
 from estudiante import *
+from profesor import *
 
 
 salir = True
@@ -24,6 +25,7 @@ while salir:
         ingresar_alumno()  
     elif opt == 2:
         print('opt 2')
+        ingresar_profesor()
     elif opt == 3:
         print('\nCURSOS:')
         Curso.mostrar_cursos()

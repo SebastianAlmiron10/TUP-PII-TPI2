@@ -1,6 +1,6 @@
 from usuario import *
-from data import *
 from cursos import *
+from data import *
 
 def ingresar_alumno():
     email = input("Ingrese su email: \n")
