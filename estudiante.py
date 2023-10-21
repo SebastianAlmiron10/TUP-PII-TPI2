@@ -8,13 +8,19 @@ def ingresar_alumno():
         if alumno.email == email:
             contrasenia = input("Ingrese su contraseña: \n")
             if alumno.contrasenia == contrasenia:
-                submenu_alumno(alumno)
-                break
+                validacion_usuario = Usuario.validar_credenciales(email, contrasenia)
+                if (validacion_usuario):
+                    submenu_alumno(alumno)
+                    break
+                else: 
+                    print("Usuario incorrecto")
+                    break
             else:
                 print('La contraseña es incorrecta.')
                 break
-    else:
-        print('Email no encontrado')
+        else:
+            print('Email no encontrado')
+            break
 
 def submenu_alumno(estudiante):
     salir = True

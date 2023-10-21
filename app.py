@@ -21,7 +21,7 @@ while salir:
     
     if opt == 1:
         print('opt 1')
-        ingresar_alumno()
+        ingresar_alumno()  
     elif opt == 2:
         print('opt 2')
     elif opt == 3:

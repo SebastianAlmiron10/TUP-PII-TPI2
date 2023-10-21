@@ -2,6 +2,7 @@ from cursos import *
 
 lista_alumnos = []
 lista_profesores = []
+lista_usuarios = []
 
 class Usuario():
 
@@ -29,10 +30,24 @@ class Usuario():
     @property
     def contrasenia(self):
         return self._contrasenia
-    
-    def validar_credenciales(self, email:str, contrasenia:str) -> bool:
+     
+    def validar_credenciales(email:str, contrasenia:str) -> bool:
+        email_valido = False
+        contrasenia_valida = False
+        for usuario_a_validar in lista_usuarios:
+            if (usuario_a_validar.email == email):
+                email_valido = True
+                if usuario_a_validar.contrasenia == contrasenia:
+                    contrasenia_valida = True
+                    return contrasenia_valida
+                else:
+                    return contrasenia_valida
+        if (email_valido == False):
+            return email_valido
 
-        pass
+
+                        
+        
 
 class Estudiante(Usuario):
     def __init__(self, nombre: str, apellido: str, email: str, contrasenia: str, legajo:int, anio_inscripcion_carrera:int) -> None:
