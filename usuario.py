@@ -2,7 +2,6 @@ from cursos import *
 
 lista_alumnos = []
 lista_profesores = []
-lista_cursos_profes = []
 
 class Usuario():
 
@@ -99,13 +98,11 @@ class Profesor(Usuario):
         curso_nuevo = input("Ingrese el nombre del curso que quiere dar de alta")
         contrasenia_nuevo_curso = Curso.generar_contrasenia()
         
-        curso_new = Curso(curso_nuevo, contrasenia_nuevo_curso )
+        curso_new = Curso(curso_nuevo, contrasenia_nuevo_curso)
         profe.lista_dictar_cursos.append(curso_new)
         lista_cursos.append(curso_new)
         print("Se agrego con exito\n")
         
-        
-        
-    def mostrar_mis_cursos_profe(self):
-        for curso_profe in self.__lista_dictar_cursos:
+    def mostrar_mis_cursos_profe(profe):
+        for curso_profe in profe.lista_dictar_cursos:
             print(curso_profe)

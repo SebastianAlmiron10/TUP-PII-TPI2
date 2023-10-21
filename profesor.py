@@ -1,6 +1,7 @@
 from usuario import *
 from cursos import *
 from data import *
+
 def ingresar_profesor():
     email_profe = input("Ingrese su email: \n")
     for profesor in lista_profesores:
@@ -33,6 +34,6 @@ def submenu_profe(profe):
         if opt == 1:
             Profesor.dictar_curso(profe)
         elif opt == 2:
-           Profesor.mostrar_mis_cursos_profe()
+           Profesor.mostrar_mis_cursos_profe(profe)
         else:
             salir = False        
