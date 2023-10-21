@@ -19,6 +19,7 @@ alumno4 = Estudiante(ejemplo.nombre, ejemplo.apellido, ejemplo.email, ejemplo.co
 lista_alumnos.append(alumno1)
 lista_alumnos.append(alumno2)
 lista_alumnos.append(alumno3)
+lista_alumnos.append(alumno4)
 
 
 
