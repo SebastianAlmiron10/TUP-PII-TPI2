@@ -32,17 +32,9 @@ def submenu_alumno(estudiante):
                 print('\nIngresar una opción válida (1 - 2 - 3)\n')
         
         if opt == 1:
-            cursos_mostrados = Curso.mostrar_cursos_enumerados()
-            curso_id = int(input('Ingresar numero de curso que quieres inscribirte: '))
-            
-            if 1 <= curso_id <= len(cursos_mostrados):
-                selected_curso = cursos_mostrados[curso_id - 1]
-                estudiante.cursos_matriculados.append(selected_curso)
-                print('\nCurso añadido con exito\n')
-            else:
-                print('Numero de curso invalido')
+            Estudiante.matricular_en_curso(estudiante)
         elif opt == 2:
-            Curso.mostrar_cursos()
+            Estudiante.mostrar_mis_cursos()
         else:
             salir = False
 

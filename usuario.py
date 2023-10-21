@@ -39,7 +39,7 @@ class Estudiante(Usuario):
         super().__init__(nombre, apellido, email, contrasenia)
         self.__legajo = legajo
         self.__anio_inscripcion_carrera = anio_inscripcion_carrera
-        self.__cursos_matriculados = []
+        self.__lista_cursos_matriculados = []
 
     def __str__(self) -> str:
         return f'\nNombre: {self.nombre}\nApellido: {self.apellido}\nEmail: {self.email}\nContraseña: {self.contrasenia}\nLegajo: {self.legajo}\nAño Inscripcion: {self.anio_inscripcion_carrera}\n'
@@ -53,11 +53,23 @@ class Estudiante(Usuario):
         return self.__anio_inscripcion_carrera
     
     @property
-    def cursos_matriculados(self):
-        return self.__cursos_matriculados
+    def lista_cursos_matriculados(self):
+        return self.__lista_cursos_matriculados
     
-    def matricular_en_curso(self, curso: Curso):
-        pass
+    def matricular_en_curso(estudiante):
+        cursos_mostrados = Curso.mostrar_cursos_enumerados()
+        curso_id = int(input('Ingresar numero de curso que quieres inscribirte: '))
+            
+        if 1 <= curso_id <= len(cursos_mostrados):
+            selected_curso = cursos_mostrados[curso_id - 1]
+            estudiante.lista_cursos_matriculados.append(selected_curso)
+            print('\nCurso añadido con exito\n')
+        else:
+            print('Numero de curso invalido')
+    
+    def mostrar_mis_cursos(self):
+        for curso in self.lista_cursos_matriculados:
+            print(curso)
     
 
 class Profesor(Usuario):

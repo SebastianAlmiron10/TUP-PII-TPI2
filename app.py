@@ -1,7 +1,7 @@
 from usuario import *
 from cursos import *
 from data import *
-from funciones import *
+from estudiante import *
 
 
 salir = True
