@@ -8,7 +8,7 @@ def ingresar_alumno():
         if alumno.email == email:
             contrasenia = input("Ingrese su contraseña: \n")
             if alumno.contrasenia == contrasenia:
-                submenu_alumno()
+                submenu_alumno(alumno)
                 break
             else:
                 print('La contraseña es incorrecta.')
@@ -16,7 +16,7 @@ def ingresar_alumno():
     else:
         print('Email no encontrado')
 
-def submenu_alumno():
+def submenu_alumno(estudiante):
     salir = True
     while salir:
         
@@ -28,12 +28,19 @@ def submenu_alumno():
                     break
                 else:
                     print('\nIngresar una opción válida (1 - 2 - 3)\n')
-
             except ValueError:
                 print('\nIngresar una opción válida (1 - 2 - 3)\n')
         
         if opt == 1:
-            print('opt 1')
+            cursos_mostrados = Curso.mostrar_cursos_enumerados()
+            curso_id = int(input('Ingresar numero de curso que quieres inscribirte: '))
+            
+            if 1 <= curso_id <= len(cursos_mostrados):
+                selected_curso = cursos_mostrados[curso_id - 1]
+                estudiante.cursos_matriculados.append(selected_curso)
+                print('\nCurso añadido con exito\n')
+            else:
+                print('Numero de curso invalido')
         elif opt == 2:
             Curso.mostrar_cursos()
         else:

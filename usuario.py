@@ -25,6 +25,7 @@ class Usuario():
     @property
     def email(self):
         return self._email
+    
     @property
     def contrasenia(self):
         return self._contrasenia
@@ -38,6 +39,7 @@ class Estudiante(Usuario):
         super().__init__(nombre, apellido, email, contrasenia)
         self.__legajo = legajo
         self.__anio_inscripcion_carrera = anio_inscripcion_carrera
+        self.__cursos_matriculados = []
 
     def __str__(self) -> str:
         return f'\nNombre: {self.nombre}\nApellido: {self.apellido}\nEmail: {self.email}\nContraseña: {self.contrasenia}\nLegajo: {self.legajo}\nAño Inscripcion: {self.anio_inscripcion_carrera}\n'
@@ -49,6 +51,10 @@ class Estudiante(Usuario):
     @property
     def anio_inscripcion_carrera(self):
         return self.__anio_inscripcion_carrera
+    
+    @property
+    def cursos_matriculados(self):
+        return self.__cursos_matriculados
     
     def matricular_en_curso(self, curso: Curso):
         pass

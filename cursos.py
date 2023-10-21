@@ -24,7 +24,16 @@ class Curso():
         return contrasenia_matriculacion
     
     def mostrar_cursos() -> str:
-        for curso in lista_cursos:
+        cursos_ordenados = sorted(lista_cursos, key=lambda curso: curso.nombre)
+        for curso in cursos_ordenados:
             print(curso)
+    
+    @staticmethod
+    def mostrar_cursos_enumerados():
+        cursos_ordenados = sorted(lista_cursos, key=lambda curso: curso.nombre)
+        for i, curso in enumerate(cursos_ordenados, start=1):
+            print(f'{i} - {curso.nombre}')
+        return cursos_ordenados
+
     
     
