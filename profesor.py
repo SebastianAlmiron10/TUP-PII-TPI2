@@ -3,20 +3,21 @@ from cursos import *
 from data import *
 
 def ingresar_profesor():
-    email_profe = input("Ingrese su email: \n")
+    email = input("Ingrese su email: \n")
     for profesor in lista_profesores:
-        if profesor.email == email_profe:
+        if profesor.email == email:
             contrasenia = input("Ingrese su contraseña: \n")
-            if profesor.contrasenia == contrasenia:
-                submenu_profe(profesor)
+            validacion_usuario = Usuario.validar_credenciales(email, contrasenia)
+            if not(validacion_usuario):
+                print("Usuario Invalido")
                 break
             else:
-                print('La contraseña es incorrecta.')
+                submenu(profesor)
                 break
     else:
-        print('Email no encontrado, darse de alta en alumnado')
+        print('Email no encontrado')
 
-def submenu_profe(profe):
+def submenu(profe):
     salir = True
     while salir:
         

@@ -1,5 +1,5 @@
 from cursos import *
-import os
+from extras import limpiar as cls
 
 lista_alumnos = []
 lista_profesores = []
@@ -45,11 +45,7 @@ class Usuario():
                     return contrasenia_valida
         if (email_valido == False):
             return email_valido
-
-
-                        
         
-
 class Estudiante(Usuario):
     def __init__(self, nombre: str, apellido: str, email: str, contrasenia: str, legajo:int, anio_inscripcion_carrera:int) -> None:
         super().__init__(nombre, apellido, email, contrasenia)
@@ -76,33 +72,36 @@ class Estudiante(Usuario):
         cursos_mostrados = Curso.mostrar_cursos_enumerados()
         curso_id = int(input('\nIngresar numero de curso que quieres inscribirte: '))
         
-        if 1 <= curso_id <= len(cursos_mostrados):
-            selected_curso = cursos_mostrados[curso_id - 1]
-            curso_ya_matriculado = False
-            
-            for curso_matriculado in estudiante.lista_cursos_matriculados:
-                if selected_curso.nombre == curso_matriculado.nombre:
-                    print('\nYa estás matriculado en este curso\n')
-                    curso_ya_matriculado = True
-                    break
-            if not curso_ya_matriculado:
-                contrasenia_curso = str(input('Ingresar clave de matriculacion: '))
-                if selected_curso.contrasenia_matriculacion == contrasenia_curso:
-                    estudiante.lista_cursos_matriculados.append(selected_curso)
-                    print('\nCurso añadido con exito\n')
-                    input('Pulse entrer para continuar...')
-                    os.system('cls')
-                else:
-                    print('clave incorrecta\n\n')
+        try:
+            if 1 <= curso_id <= len(cursos_mostrados):
+                selected_curso = cursos_mostrados[curso_id - 1]
+                curso_ya_matriculado = False
                 
-        else:
-            print('\nNumero de curso invalido\n')
+                for curso_matriculado in estudiante.lista_cursos_matriculados:
+                    if selected_curso.nombre == curso_matriculado.nombre:
+                        print('\nYa estás matriculado en este curso\n')
+                        curso_ya_matriculado = True
+                        break
+                if not curso_ya_matriculado:
+                    contrasenia_curso = str(input('Ingresar clave de matriculacion: '))
+                    if selected_curso.contrasenia_matriculacion == contrasenia_curso:
+                        estudiante.lista_cursos_matriculados.append(selected_curso)
+                        print('\nCurso añadido con exito\n')
+                        cls()
+                    else:
+                        print('clave incorrecta\n\n')   
+                        cls()   
+            else:
+                print('\nNumero de curso invalido\n')
+                cls()
+        except:
+            print('Opcion invalida')
+            cls()
     
     def mostrar_mis_cursos(Estudiante):
         for curso in Estudiante.lista_cursos_matriculados:
             print(curso)
     
-
 class Profesor(Usuario):
     def __init__(self, nombre: str, apellido: str, email: str, contrasenia: str, titulo:str, anio_egreso:int) -> None:
         super().__init__(nombre, apellido, email, contrasenia)
@@ -126,14 +125,28 @@ class Profesor(Usuario):
         return self.__lista_dictar_cursos
 
     def dictar_curso(profe):
-        curso_nuevo = input("Ingrese el nombre del curso que quiere dar de alta")
+        curso_nuevo = input("\nIngrese el nombre del curso: ")
         contrasenia_nuevo_curso = Curso.generar_contrasenia()
         
         curso_new = Curso(curso_nuevo, contrasenia_nuevo_curso)
         profe.lista_dictar_cursos.append(curso_new)
         lista_cursos.append(curso_new)
-        print("Se agrego con exito\n")
+        print("\nSe agrego con exito\n")
+        cls()
         
     def mostrar_mis_cursos_profe(profe):
-        for curso_profe in profe.lista_dictar_cursos:
-            print(curso_profe)
+        for i, curso_profe in enumerate(profe.lista_dictar_cursos, start=1):
+            print(f'{i} - {curso_profe.nombre}')
+        
+        try:
+            curso_id = int(input('Ingresar numero de curso: '))
+            if 1 <= curso_id <= len(profe.lista_dictar_cursos):
+                curso_seleccionado = profe.lista_dictar_cursos[curso_id - 1]
+                print(f'\nCurso seleccionado: {curso_seleccionado}')
+                cls()
+            else:
+                print('Número de curso inválido.')
+                cls()
+        except:
+            print('Opcion invalida')
+            cls()

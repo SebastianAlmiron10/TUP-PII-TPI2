@@ -10,9 +10,9 @@ def ingresar_alumno():
             validacion_usuario = Usuario.validar_credenciales(email, contrasenia)
             if not(validacion_usuario):
                 print("Usuario Invalido")
-            if alumno.contrasenia == contrasenia:
-                submenu_alumno(alumno)
+                break
             else:
+                submenu_alumno(alumno)
                 break
     else:
         print('Email no encontrado')

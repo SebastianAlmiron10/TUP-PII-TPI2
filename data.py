@@ -21,10 +21,10 @@ lista_alumnos.append(alumno2)
 lista_alumnos.append(alumno3)
 lista_alumnos.append(alumno4)
 
+Juan = Usuario("Juan", "Perez", "j@gmail.com", '12345')
+lista_usuarios.append(Juan)
 
-
-profe1 = Profesor("Juan", "Perez", "j@gmail.com", '12345', "Licenciado en Matematicas", 2008)
-
+profe1 = Profesor(Juan.nombre, Juan.apellido, Juan.email, Juan.contrasenia, "Licenciado en Matematicas", 2008 )
 lista_profesores.append(profe1)
 
 curso1 = Curso("INGLES I", 'abcd')
@@ -40,11 +40,3 @@ lista_cursos.append(curso3)
 lista_cursos.append(curso4)
 lista_cursos.append(curso5)
 lista_cursos.append(curso6)
-
-#for alumno in lista_alumnos:
-#    print(alumno)
-    
-#for profesor in lista_profesores:
-#    print(profesor)
-    
-#Curso.mostrar_cursos()

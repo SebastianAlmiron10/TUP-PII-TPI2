@@ -18,6 +18,7 @@ class Curso():
     def contrasenia_matriculacion(self):
         return self.__contrasenia_matriculacion
     
+    @staticmethod
     def generar_contrasenia() -> str:
         characters = string.ascii_letters + string.digits
         contrasenia_matriculacion = ''.join(random.choice(characters) for i in range(6))
@@ -26,10 +27,9 @@ class Curso():
     def mostrar_cursos() -> str:
         cursos_ordenados = sorted(lista_cursos, key=lambda curso: curso.nombre)
         for curso in cursos_ordenados:
-            print(curso)
+            print(curso.nombre)
     
-    @staticmethod
-    def mostrar_cursos_enumerados():
+    def mostrar_cursos_enumerados() -> str:
         cursos_ordenados = sorted(lista_cursos, key=lambda curso: curso.nombre)
         for i, curso in enumerate(cursos_ordenados, start=1):
             print(f'{i} - {curso.nombre}')

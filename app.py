@@ -3,6 +3,9 @@ from cursos import *
 from data import *
 from estudiante import *
 from profesor import *
+from extras import limpiar as cls
+
+
 
 
 salir = True
@@ -21,13 +24,14 @@ while salir:
             print('\nIngresar una opción válida (1 - 2 - 3 - 4)\n')
     
     if opt == 1:
-        print('opt 1')
         ingresar_alumno()  
+        cls()
     elif opt == 2:
-        print('opt 2')
         ingresar_profesor()
+        cls()
     elif opt == 3:
         print('\nCURSOS:')
         Curso.mostrar_cursos()
+        cls()
     else:
         salir = False
