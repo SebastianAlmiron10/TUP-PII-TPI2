@@ -71,9 +71,9 @@ class Estudiante(Usuario):
     def matricular_en_curso(estudiante):
         cl()
         cursos_mostrados = Curso.mostrar_cursos_enumerados()
-        curso_id = int(input('\nIngresar numero de curso que quieres inscribirte: '))
         
         try:
+            curso_id = int(input('\nIngresar numero de curso que quieres inscribirte: '))
             if 1 <= curso_id <= len(cursos_mostrados):
                 selected_curso = cursos_mostrados[curso_id - 1]
                 curso_ya_matriculado = False
@@ -100,8 +100,11 @@ class Estudiante(Usuario):
             cls()
     
     def mostrar_mis_cursos(Estudiante):
-        for curso in Estudiante.lista_cursos_matriculados:
-            print(curso)
+        if len(Estudiante.lista_cursos_matriculados) >= 1:
+            for curso in Estudiante.lista_cursos_matriculados:
+                print(curso)
+        else:
+            print('\nNo esta matriculado a ningun curso')
     
 class Profesor(Usuario):
     def __init__(self, nombre: str, apellido: str, email: str, contrasenia: str, titulo:str, anio_egreso:int) -> None:
@@ -137,18 +140,21 @@ class Profesor(Usuario):
         
     def mostrar_mis_cursos_profe(profe):
         cl()
-        for i, curso_profe in enumerate(profe.lista_dictar_cursos, start=1):
-            print(f'{i} - {curso_profe.nombre}')
-        
-        try:
-            curso_id = int(input('Ingresar numero de curso: '))
-            if 1 <= curso_id <= len(profe.lista_dictar_cursos):
-                curso_seleccionado = profe.lista_dictar_cursos[curso_id - 1]
-                print(f'\nCurso seleccionado: {curso_seleccionado}')
+        if len(profe.lista_dictar_cursos) >= 1:
+            for i, curso_profe in enumerate(profe.lista_dictar_cursos, start=1):
+                print(f'{i} - {curso_profe.nombre}')
+            
+            try:
+                curso_id = int(input('Ingresar numero de curso: '))
+                if 1 <= curso_id <= len(profe.lista_dictar_cursos):
+                    curso_seleccionado = profe.lista_dictar_cursos[curso_id - 1]
+                    print(f'\nCurso seleccionado: {curso_seleccionado}')
+                    cls()
+                else:
+                    print('Número de curso inválido.')
+                    cls()
+            except:
+                print('Opcion invalida')
                 cls()
-            else:
-                print('Número de curso inválido.')
-                cls()
-        except:
-            print('Opcion invalida')
-            cls()
+        else:
+            print('\nNo esta dictando ningun curso')
