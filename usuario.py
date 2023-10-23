@@ -1,4 +1,5 @@
 from cursos import *
+import os
 
 lista_alumnos = []
 lista_profesores = []
@@ -73,17 +74,32 @@ class Estudiante(Usuario):
     
     def matricular_en_curso(estudiante):
         cursos_mostrados = Curso.mostrar_cursos_enumerados()
-        curso_id = int(input('Ingresar numero de curso que quieres inscribirte: '))
-            
+        curso_id = int(input('\nIngresar numero de curso que quieres inscribirte: '))
+        
         if 1 <= curso_id <= len(cursos_mostrados):
             selected_curso = cursos_mostrados[curso_id - 1]
-            estudiante.lista_cursos_matriculados.append(selected_curso)
-            print('\nCurso añadido con exito\n')
+            curso_ya_matriculado = False
+            
+            for curso_matriculado in estudiante.lista_cursos_matriculados:
+                if selected_curso.nombre == curso_matriculado.nombre:
+                    print('\nYa estás matriculado en este curso\n')
+                    curso_ya_matriculado = True
+                    break
+            if not curso_ya_matriculado:
+                contrasenia_curso = str(input('Ingresar clave de matriculacion: '))
+                if selected_curso.contrasenia_matriculacion == contrasenia_curso:
+                    estudiante.lista_cursos_matriculados.append(selected_curso)
+                    print('\nCurso añadido con exito\n')
+                    input('Pulse entrer para continuar...')
+                    os.system('cls')
+                else:
+                    print('clave incorrecta\n\n')
+                
         else:
-            print('Numero de curso invalido')
+            print('\nNumero de curso invalido\n')
     
-    def mostrar_mis_cursos(self):
-        for curso in self.lista_cursos_matriculados:
+    def mostrar_mis_cursos(Estudiante):
+        for curso in Estudiante.lista_cursos_matriculados:
             print(curso)
     
 
