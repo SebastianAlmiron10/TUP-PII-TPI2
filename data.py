@@ -23,7 +23,7 @@ lista_alumnos.append(alumno4)
 
 
 
-profe1 = Profesor("Juan", "Perez", "juanperez@gmail.com", '12345', "Licenciado en Matematica", 2008)
+profe1 = Profesor("Juan", "Perez", "j@gmail.com", '12345', "Licenciado en Matematicas", 2008)
 
 lista_profesores.append(profe1)
 

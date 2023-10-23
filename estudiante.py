@@ -1,6 +1,6 @@
 from usuario import *
-from data import *
 from cursos import *
+from data import *
 
 def ingresar_alumno():
     email = input("Ingrese su email: \n")
@@ -36,7 +36,7 @@ def submenu_alumno(estudiante):
         if opt == 1:
             Estudiante.matricular_en_curso(estudiante)
         elif opt == 2:
-            Estudiante.mostrar_mis_cursos()
+            Estudiante.mostrar_mis_cursos(estudiante)
         else:
             salir = False
 
