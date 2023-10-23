@@ -1,5 +1,5 @@
 from cursos import *
-from extras import limpiar as cls
+from extras import *
 
 lista_alumnos = []
 lista_profesores = []
@@ -69,6 +69,7 @@ class Estudiante(Usuario):
         return self.__lista_cursos_matriculados
     
     def matricular_en_curso(estudiante):
+        cl()
         cursos_mostrados = Curso.mostrar_cursos_enumerados()
         curso_id = int(input('\nIngresar numero de curso que quieres inscribirte: '))
         
@@ -135,6 +136,7 @@ class Profesor(Usuario):
         cls()
         
     def mostrar_mis_cursos_profe(profe):
+        cl()
         for i, curso_profe in enumerate(profe.lista_dictar_cursos, start=1):
             print(f'{i} - {curso_profe.nombre}')
         

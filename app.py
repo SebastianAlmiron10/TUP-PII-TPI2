@@ -3,7 +3,6 @@ from cursos import *
 from data import *
 from estudiante import *
 from profesor import *
-from extras import limpiar as cls
 
 
 

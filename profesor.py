@@ -3,6 +3,7 @@ from cursos import *
 from data import *
 
 def ingresar_profesor():
+    cl()
     email = input("Ingrese su email: \n")
     for profesor in lista_profesores:
         if profesor.email == email:
@@ -19,6 +20,7 @@ def ingresar_profesor():
 
 def submenu(profe):
     salir = True
+    cl()
     while salir:
         
         while True:

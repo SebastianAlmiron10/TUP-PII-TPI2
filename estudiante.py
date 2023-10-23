@@ -3,6 +3,7 @@ from cursos import *
 from data import *
 
 def ingresar_alumno():
+    cl()
     email = input("Ingrese su email: \n")
     for alumno in lista_alumnos:
         if alumno.email == email:
@@ -20,6 +21,7 @@ def ingresar_alumno():
 
 def submenu_alumno(estudiante):
     salir = True
+    cl()
     while salir:
         
         while True:
@@ -36,7 +38,9 @@ def submenu_alumno(estudiante):
         if opt == 1:
             Estudiante.matricular_en_curso(estudiante)
         elif opt == 2:
+            cl()
             Estudiante.mostrar_mis_cursos(estudiante)
+            cls()
         else:
             salir = False
 
