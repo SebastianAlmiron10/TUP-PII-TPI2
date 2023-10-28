@@ -1,15 +1,24 @@
 import random
 import string
 
+
 lista_cursos = []
 class Curso():
-    def __init__(self, nombre:str, contrasenia_matriculacion:str) -> None:
+    prox_cod = int(0) 
+
+    def __init__(self, nombre:str, contrasenia_matriculacion:str, codigo:int) -> None:
         self.__nombre = nombre
         self.__contrasenia_matriculacion = contrasenia_matriculacion
+        self.__codigo = codigo
+
 
     def __str__(self) -> str:
         return f'\nMateria: {self.nombre}\nContraseña de matriculacion: {self.contrasenia_matriculacion}\n'
 
+    @property
+    def codigo(self):
+        return self.__codigo
+    
     @property
     def nombre(self):
         return self.__nombre
@@ -34,6 +43,9 @@ class Curso():
         for i, curso in enumerate(cursos_ordenados, start=1):
             print(f'{i} - {curso.nombre}')
         return cursos_ordenados
+    
+    def nuevo_archivo(archivo: object):
+        pass
 
     
     

@@ -25,7 +25,7 @@ def submenu_alumno(estudiante):
     while salir:
         
         while True:
-            print('\n---- Menu Alumno----\n1 - Matricularse a un curso.\n2 - Ver curso.\n3 - Volver al menu principal\n')
+            print('\n---- Menu Alumno----\n1 - Matricularse a un curso.\n2 - Ver curso.\n3 - Desmatricularse de un Curso\n4 - Volver al menu princpal')
             try:
                 opt = int(input('Ingresar opcion: '))
                 if 1 <= opt <= 3:
@@ -41,6 +41,8 @@ def submenu_alumno(estudiante):
             cl()
             Estudiante.mostrar_mis_cursos(estudiante)
             cls()
+        elif opt == 3:
+            Estudiante.desmatricular_curso()
         else:
             salir = False
 

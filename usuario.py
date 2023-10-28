@@ -98,6 +98,9 @@ class Estudiante(Usuario):
         except:
             print('Opcion invalida')
             cls()
+
+    def desmatricular_curso():
+        pass
     
     def mostrar_mis_cursos(Estudiante):
         if len(Estudiante.lista_cursos_matriculados) >= 1:
