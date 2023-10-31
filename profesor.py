@@ -4,19 +4,76 @@ from data import *
 
 def ingresar_profesor():
     cl()
-    email = input("Ingrese su email: \n")
-    for profesor in lista_profesores:
-        if profesor.email == email:
-            contrasenia = input("Ingrese su contraseña: \n")
-            validacion_usuario = Usuario.validar_credenciales(email, contrasenia)
-            if not(validacion_usuario):
-                print("Usuario Invalido")
+    while True:
+        print('1 - Iniciar Sesion.\n2 - Darse de Alta.\n3 - Salir')
+        try:
+            opt = int(input('Ingresar opcion: '))
+            if 1 <= opt <= 3:
                 break
             else:
-                submenu(profesor)
-                break
-    else:
-        print('Email no encontrado')
+                print('\nIngresar una opción válida (1 - 2 - 3)\n')
+
+        except ValueError:
+            print('\nIngresar una opción válida (1 - 2 - 3)\n')
+
+    if opt == 1:
+        cl()
+        email = input("Ingrese su email: \n")
+        for profesor in lista_profesores:
+            if profesor.email == email:
+                contrasenia = input("Ingrese su contraseña: \n")
+                validacion_usuario = Usuario.validar_credenciales(email, contrasenia)
+                if not(validacion_usuario):
+                    print("Usuario Invalido")
+                    break
+                else:
+                    submenu(profesor)
+                    break
+            else:
+                print("Email no encontrado")
+    elif opt == 2:
+        cl()
+        codigo_alta = input("Ingrese el Codigo para Darse de Alta: ")
+        if (codigo_alta.lower() == "admin"):
+            alta_profesor()
+        else:
+            print("Codigo Incorrecto")
+            cls()    
+    elif opt == 3:
+        pass
+
+
+def alta_profesor():
+    cl()
+    nombre = input("Ingrese su Nombre: ")
+    apellido = input("Ingrese su Apellido: ") 
+    titulo = input("Ingrese el Titulo que Tiene: ")
+    while True:
+        try:
+            anio_egreso = int(input("Ingrese el Año de Egreso: "))
+            break
+        except ValueError:
+            cl()
+            print("Ingrese un Numero Válido\n")
+    email = input("Ingrese su Email: ")
+
+    email_repetido = False
+    for profesor in lista_usuarios:
+        if (email == profesor.email):
+            print("El Mail ya se Encuentra Registrado.")
+            email_repetido = True
+            break
+    
+    if not(email_repetido):
+        contrasenia = input("Ingrese una Contraseña para su Cuenta: ")
+        profe_x = Usuario(nombre, apellido, email, contrasenia) #Creamos el Usuario
+        lista_usuarios.append(profe_x)
+        profe_X = Profesor(profe_x.nombre, profe_x.apellido, profe_x.email, profe_x.contrasenia, titulo, anio_egreso) #Creamos la Cuenta con la Informacion del Profesor
+        lista_alumnos.append(profe_X)
+        cl()
+        print("Registro Exitoso")
+        cls()
+
 
 def submenu(profe):
     salir = True
