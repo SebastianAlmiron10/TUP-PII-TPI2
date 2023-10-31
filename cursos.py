@@ -10,10 +10,11 @@ class Curso():
         self.__nombre = nombre
         self.__contrasenia_matriculacion = contrasenia_matriculacion
         self.__codigo = codigo
+        
 
 
     def __str__(self) -> str:
-        return f'\nMateria: {self.nombre}\nContraseña de matriculacion: {self.contrasenia_matriculacion}\n'
+        return f'\nMateria: {self.nombre}\nContraseña de matriculacion: {self.contrasenia_matriculacion}\nCodigo: {self.codigo}'
 
     @property
     def codigo(self):
@@ -32,6 +33,12 @@ class Curso():
         characters = string.ascii_letters + string.digits
         contrasenia_matriculacion = ''.join(random.choice(characters) for i in range(6))
         return contrasenia_matriculacion
+    
+    @staticmethod
+    def generar_codigo() -> int:
+        Curso.prox_cod += 1
+        return Curso.prox_cod
+
     
     def mostrar_cursos() -> str:
         cursos_ordenados = sorted(lista_cursos, key=lambda curso: curso.nombre)

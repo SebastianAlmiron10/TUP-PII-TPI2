@@ -135,7 +135,7 @@ class Profesor(Usuario):
         curso_nuevo = input("\nIngrese el nombre del curso: ")
         contrasenia_nuevo_curso = Curso.generar_contrasenia()
         
-        curso_new = Curso(curso_nuevo, contrasenia_nuevo_curso)
+        curso_new = Curso(curso_nuevo, contrasenia_nuevo_curso, Curso.generar_codigo())
         profe.lista_dictar_cursos.append(curso_new)
         lista_cursos.append(curso_new)
         print("\nSe agrego con exito\n")

@@ -27,8 +27,9 @@ while salir:
         cls()
     elif opt == 2:
         ingresar_profesor()
-        cls()
+        cl()
     elif opt == 3:
+        cl()
         print('\nCURSOS:')
         Curso.mostrar_cursos()
         cls()

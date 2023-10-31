@@ -37,8 +37,9 @@ def ingresar_profesor():
         if (codigo_alta.lower() == "admin"):
             alta_profesor()
         else:
+            cl()
             print("Codigo Incorrecto")
-            cls()    
+                
     elif opt == 3:
         pass
 
@@ -60,6 +61,7 @@ def alta_profesor():
     email_repetido = False
     for profesor in lista_usuarios:
         if (email == profesor.email):
+            cl()
             print("El Mail ya se Encuentra Registrado.")
             email_repetido = True
             break
