@@ -1,5 +1,6 @@
 import random
 import string
+from archivo import *
 
 
 lista_cursos = []
@@ -10,6 +11,8 @@ class Curso():
         self.__nombre = nombre
         self.__contrasenia_matriculacion = contrasenia_matriculacion
         self.__codigo = codigo
+        self.__lista_archivos = []
+
         
 
 
@@ -20,6 +23,8 @@ class Curso():
     def codigo(self):
         return self.__codigo
     
+    
+    
     @property
     def nombre(self):
         return self.__nombre
@@ -27,6 +32,10 @@ class Curso():
     @property
     def contrasenia_matriculacion(self):
         return self.__contrasenia_matriculacion
+    
+    @property
+    def lista_archivos(self):
+        return self.__lista_archivos 
     
     @staticmethod
     def generar_contrasenia() -> str:
@@ -51,8 +60,15 @@ class Curso():
             print(f'{i} - {curso.nombre}')
         return cursos_ordenados
     
-    def nuevo_archivo(archivo: object):
-        pass
+    def nuevo_archivo() -> None:
+        nombre_archivo = input("Ingrese el nombre del archivo")
+        fecha_archivo = date.today()
+        formato_archivo = input("Ingrese el formato del archivo")
+
+        nuevo_archivo = Archivo(nombre_archivo, fecha_archivo, formato_archivo)
+
+        lista_archivos.append(nuevo_archivo)
+        
 
     
     

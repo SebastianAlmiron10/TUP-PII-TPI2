@@ -98,9 +98,25 @@ class Estudiante(Usuario):
         except:
             print('Opcion invalida')
             cls()
-
-    def desmatricular_curso():
-        pass
+        
+    def desmatricular_curso(estudiante):
+        if len(estudiante.lista_cursos_matriculados) >= 1:
+            for i, curso_alumno in enumerate(estudiante.lista_cursos_matriculados, start=1):
+                print(f'{i} - {curso_alumno.nombre}')
+            
+            curso_id = int(input('Ingresar numero del curso que desea desmatricularse: '))
+            if 1 <= curso_id <= len(estudiante.lista_cursos_matriculados):
+                    curso_seleccionado = estudiante.lista_cursos_matriculados[curso_id - 1]
+                    print(f'\nCurso seleccionado: {curso_seleccionado}')
+                    estudiante.lista_cursos_matriculados.pop(curso_id - 1)
+                    print("Desmatriculacion exitosa")
+                    cls()
+            else:
+                    print('Número de curso inválido.')
+                    cls()
+           
+        else:
+            print('\nNo esta matriculado a ese curso')
     
     def mostrar_mis_cursos(Estudiante):
         if len(Estudiante.lista_cursos_matriculados) >= 1:
@@ -152,6 +168,10 @@ class Profesor(Usuario):
                 if 1 <= curso_id <= len(profe.lista_dictar_cursos):
                     curso_seleccionado = profe.lista_dictar_cursos[curso_id - 1]
                     print(f'\nCurso seleccionado: {curso_seleccionado}')
+                    opt = int(input("Desea añadir un archivo al curso 1-Si -- 2-No\n"))
+                    if(opt == 1):
+                        Curso.nuevo_archivo()
+                    
                     cls()
                 else:
                     print('Número de curso inválido.')
@@ -161,3 +181,5 @@ class Profesor(Usuario):
                 cls()
         else:
             print('\nNo esta dictando ningun curso')
+    
+    

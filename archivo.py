@@ -1,11 +1,13 @@
 from cursos import *
 from datetime import *
-
+lista_archivos = []
 class Archivo():
     def __init__(self, nombre:str, fecha:date, formato:str) -> None:
         self.__nombre = nombre
         self.__fecha = date.today()
         self.__formato = formato
+        
+    
     
     @property
     def nombre(self):
@@ -18,3 +20,7 @@ class Archivo():
     @property
     def formato(self):
         return self.__formato
+    
+    def __str__(self) -> str:
+        return f'Nombre: {self.nombre} Fecha: {self.fecha} Formato: {self.formato}'
+    

@@ -42,7 +42,7 @@ def submenu_alumno(estudiante):
             Estudiante.mostrar_mis_cursos(estudiante)
             cls()
         elif opt == 3:
-            Estudiante.desmatricular_curso()
+            Estudiante.desmatricular_curso(estudiante)
         else:
             salir = False
 

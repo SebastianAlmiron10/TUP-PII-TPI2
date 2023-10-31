@@ -14,4 +14,5 @@ class Carrera():
     def __str__(self) -> str:
         return f'Nombre: {self.nombre} Cantidad de años: {self.cant_anios}'
 
-        
+    def get_cantidad_materias() -> int:
+        pass
