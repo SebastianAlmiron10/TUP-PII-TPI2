@@ -31,6 +31,7 @@ def ingresar_profesor():
                     break
             else:
                 print("Email no encontrado")
+                cls()
     elif opt == 2:
         cl()
         codigo_alta = input("Ingrese el Codigo para Darse de Alta: ")
@@ -52,7 +53,11 @@ def alta_profesor():
     while True:
         try:
             anio_egreso = int(input("Ingrese el Año de Egreso: "))
-            break
+            if (anio_egreso < 1900 or anio_egreso > 3000):
+                cl()
+                print("Ingrese un Numero Válido\n")
+            else:    
+                break
         except ValueError:
             cl()
             print("Ingrese un Numero Válido\n")
@@ -64,6 +69,7 @@ def alta_profesor():
             cl()
             print("El Mail ya se Encuentra Registrado.")
             email_repetido = True
+            cls()
             break
     
     if not(email_repetido):

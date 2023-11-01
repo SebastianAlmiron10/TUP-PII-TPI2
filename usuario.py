@@ -1,5 +1,7 @@
 from cursos import *
 from extras import *
+from archivo import *
+
 
 lista_alumnos = []
 lista_profesores = []
@@ -116,12 +118,14 @@ class Estudiante(Usuario):
                     cls()
            
         else:
-            print('\nNo esta matriculado a ese curso')
+            print('\nNo esta Matriculado a Ningun Curso')
     
-    def mostrar_mis_cursos(Estudiante):
-        if len(Estudiante.lista_cursos_matriculados) >= 1:
-            for curso in Estudiante.lista_cursos_matriculados:
-                print(curso)
+    def mostrar_mis_cursos(estudiante):
+        if len(estudiante.lista_cursos_matriculados) >= 1:
+            for curso in estudiante.lista_cursos_matriculados:
+                print(curso) 
+            print("-- Archivos --")
+            curso.ver_archivos()    
         else:
             print('\nNo esta matriculado a ningun curso')
     
@@ -167,11 +171,10 @@ class Profesor(Usuario):
                 curso_id = int(input('Ingresar numero de curso: '))
                 if 1 <= curso_id <= len(profe.lista_dictar_cursos):
                     curso_seleccionado = profe.lista_dictar_cursos[curso_id - 1]
-                    print(f'\nCurso seleccionado: {curso_seleccionado}')
-                    opt = int(input("Desea añadir un archivo al curso 1-Si -- 2-No\n"))
+                    print(f'\nCurso seleccionado: {curso_seleccionado}\nCantidad de Archivos: {len(curso_seleccionado.archivos)}')
+                    opt = int(input("-----------------------------\nDesea añadir un archivo al curso\n\n1- Si\n2- No\n"))
                     if(opt == 1):
-                        Curso.nuevo_archivo()
-                    
+                        profe.lista_dictar_cursos[curso_id - 1].nuevo_archivo()
                     cls()
                 else:
                     print('Número de curso inválido.')

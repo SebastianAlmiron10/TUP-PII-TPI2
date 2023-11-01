@@ -1,6 +1,8 @@
 from usuario import *
 from cursos import *
 from archivo import *
+from datetime import *
+
 augusto = Usuario("Augusto", "Poratti", "augusto.poratti1@gmail.com", "12345")
 sebastian = Usuario("Sebastian", "Almiron", "sebastianr_almiron@hotmail.com", "12345")
 tadeo = Usuario("Tadeo", "Junco", "tadeojunco@hotmail.com", "12345")
@@ -27,12 +29,13 @@ lista_usuarios.append(Juan)
 profe1 = Profesor(Juan.nombre, Juan.apellido, Juan.email, Juan.contrasenia, "Licenciado en Matematicas", 2008 )
 lista_profesores.append(profe1)
 
-curso1 = Curso("INGLES I", 'abcd')
-curso2 = Curso("INGLES II", Curso.generar_contrasenia())
-curso3 = Curso("PROGRAMACION I", Curso.generar_contrasenia())
-curso4 = Curso("PROGRAMACION II", Curso.generar_contrasenia())
-curso5 = Curso("LABORATORIO DE COMPUTACION I", Curso.generar_contrasenia())
-curso6 = Curso("LABORATORIO DE COMPUTACION II", Curso.generar_contrasenia())
+curso1 = Curso("INGLES I", "a12345", Curso.generar_codigo())
+curso2 = Curso("INGLES II", "ab1234", Curso.generar_codigo())
+curso3 = Curso("PROGRAMACION I", "abc123", Curso.generar_codigo())
+curso4 = Curso("PROGRAMACION II", "abcd12", Curso.generar_codigo())
+curso5 = Curso("LABORATORIO DE COMPUTACION I", "abcde1", Curso.generar_codigo())
+curso6 = Curso("LABORATORIO DE COMPUTACION II", "abcdef", Curso.generar_codigo())
+
 
 lista_cursos.append(curso1)
 lista_cursos.append(curso2)
@@ -41,4 +44,6 @@ lista_cursos.append(curso4)
 lista_cursos.append(curso5)
 lista_cursos.append(curso6)
 
-archivo1 = Archivo("Tp1", )
+
+
+

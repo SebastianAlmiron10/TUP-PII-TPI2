@@ -2,6 +2,7 @@ from usuario import *
 from cursos import *
 from data import *
 
+
 def ingresar_alumno():
     cl()
     email = input("Ingrese su email: \n")
@@ -16,33 +17,34 @@ def ingresar_alumno():
                 submenu_alumno(alumno)
                 break
     else:
-        print('Email no encontrado')
+        print('Email no encontrado, Debe darse de Alta en Alumnado.')
         
 
 def submenu_alumno(estudiante):
-    salir = True
     cl()
+    salir = True
     while salir:
         
-        while True:
-            print('\n---- Menu Alumno----\n1 - Matricularse a un curso.\n2 - Ver curso.\n3 - Desmatricularse de un Curso\n4 - Volver al menu princpal')
+        while salir:
+            print('\n---- Menu Alumno ----\n1 - Matricularse a un curso.\n2 - Desmatricularse de un Curso.\n3 - Ver curso. \n4 - Volver al menu princpal.')
             try:
                 opt = int(input('Ingresar opcion: '))
-                if 1 <= opt <= 3:
-                    break
+                if 1 <= opt <= 4:
+                    if opt == 1:
+                        Estudiante.matricular_en_curso(estudiante)
+                    elif opt == 2:
+                        Estudiante.desmatricular_curso(estudiante)
+                    elif opt == 3:
+                        cl()
+                        Estudiante.mostrar_mis_cursos(estudiante)
+                        cls()
+                    elif opt == 4:
+                        salir = False
+                        break
                 else:
-                    print('\nIngresar una opción válida (1 - 2 - 3)\n')
-            except ValueError:
-                print('\nIngresar una opción válida (1 - 2 - 3)\n')
+                    print('\nIngresar una opción válida (1 - 2 - 3 - 4)\n')
+            except:
+                print('\nIngresar una opción válida (1 - 2 - 3 - 4)\n')
         
-        if opt == 1:
-            Estudiante.matricular_en_curso(estudiante)
-        elif opt == 2:
-            cl()
-            Estudiante.mostrar_mis_cursos(estudiante)
-            cls()
-        elif opt == 3:
-            Estudiante.desmatricular_curso(estudiante)
-        else:
-            salir = False
-
+            
+                
