@@ -29,9 +29,9 @@ def ingresar_profesor():
                 else:
                     submenu(profesor)
                     break
-            else:
-                print("Email no encontrado")
-                cls()
+        else:
+            print("Email no encontrado")
+            cls()
     elif opt == 2:
         cl()
         codigo_alta = input("Ingrese el Codigo para Darse de Alta: ")
@@ -40,6 +40,7 @@ def ingresar_profesor():
         else:
             cl()
             print("Codigo Incorrecto")
+            cls()
                 
     elif opt == 3:
         pass
@@ -77,7 +78,7 @@ def alta_profesor():
         profe_x = Usuario(nombre, apellido, email, contrasenia) #Creamos el Usuario
         lista_usuarios.append(profe_x)
         profe_X = Profesor(profe_x.nombre, profe_x.apellido, profe_x.email, profe_x.contrasenia, titulo, anio_egreso) #Creamos la Cuenta con la Informacion del Profesor
-        lista_alumnos.append(profe_X)
+        lista_profesores.append(profe_X)
         cl()
         print("Registro Exitoso")
         cls()
